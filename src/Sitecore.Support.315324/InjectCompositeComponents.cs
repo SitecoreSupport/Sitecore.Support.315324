@@ -11,6 +11,13 @@
     {
       var devices = layoutXml.Descendants("d").ToList();
 
+      #region Sitecore.Support.315324
+      if (!devices.Any())
+      {
+        return new List<XElement>();
+      }
+      #endregion
+
       devices = FilterDevicesByDeviceId(devices, contextDeviceId);
       if (!devices.Any() && Context.Device.FallbackDevice != null)
       {
