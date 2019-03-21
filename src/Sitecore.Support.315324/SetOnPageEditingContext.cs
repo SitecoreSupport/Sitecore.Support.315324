@@ -1,10 +1,11 @@
-﻿namespace Sitecore.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition
+﻿namespace Sitecore.Support.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition
 {
   using System.Linq;
   using Microsoft.Extensions.DependencyInjection;
   using Sitecore.DependencyInjection;
   using Sitecore.Mvc.Pipelines.Response.GetXmlBasedLayoutDefinition;
   using Sitecore.XA.Feature.Composites.Services;
+  using Sitecore.XA.Feature.Composites;
 
   public class SetOnPageEditingContext : Sitecore.Support.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition.InjectCompositeComponents
   {
