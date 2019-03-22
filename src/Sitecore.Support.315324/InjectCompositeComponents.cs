@@ -19,9 +19,15 @@
       #endregion
 
       devices = FilterDevicesByDeviceId(devices, contextDeviceId);
-      if (!devices.Any() && Context.Device.FallbackDevice != null)
+
+      if (!devices.Any())
       {
-        return GetDevices(layoutXml, Context.Device.FallbackDevice.ID);
+        var fallbackDevice = Context.Database.Resources.Devices[contextDeviceId]?.FallbackDevice; // Sitecore.Support.318645
+
+        if (fallbackDevice != null)
+        {
+          return GetDevices(layoutXml, fallbackDevice.ID); // Sitecore.Support.318645
+        }
       }
       return devices;
     }
