@@ -1,27 +1,38 @@
-﻿namespace Sitecore.Support.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition
-{
-  using Microsoft.Extensions.DependencyInjection;
-  using Sitecore.DependencyInjection;
-  using Sitecore.Mvc.Pipelines.Response.GetXmlBasedLayoutDefinition;
-  using Sitecore.XA.Feature.Composites;
-  using Sitecore.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition;
-  using Sitecore.XA.Feature.Composites.Services;
-  using Sitecore.XA.Foundation.Abstractions.Configuration;
-  using System.Linq;
-  using System.Xml.Linq;
+﻿using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
+using Sitecore.DependencyInjection;
+using Sitecore.Mvc.Pipelines.Response.GetXmlBasedLayoutDefinition;
+using Sitecore.XA.Feature.Composites;
+using Sitecore.XA.Feature.Composites.Services;
 
-  public class SetOnPageEditingContext : Sitecore.Support.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition.InjectCompositeComponents
+namespace Sitecore.Support.XA.Feature.Composites.Pipelines.GetXmlBasedLayoutDefinition
+{
+  public class SetOnPageEditingContext : InjectCompositeComponents
   {
+    /// <inheritdoc />
+    /// <summary>
+    /// Starts the processing - extracts composite components from layout field and then expands them recursively
+    /// </summary>
     public override void Process(GetXmlBasedLayoutDefinitionArgs args)
     {
-      if (ServiceLocator.ServiceProvider.GetService<IConfiguration<CompositesConfiguration>>().GetConfiguration().OnPageEditingEnabled)
+      if (!ServiceLocator.ServiceProvider.GetService<ICompositesConfiguration>().OnPageEditingEnabled)
       {
-        XElement result = args.Result;
-        if (result != null && GetCompositeComponents(result).Any())
-        {
-          ServiceLocator.ServiceProvider.GetService<IOnPageEditingContextService>().XmlLayoutDefinition = args.Result;
-        }
+        return;
       }
+      var layoutXml = args.Result;
+
+      if (layoutXml == null)
+      {
+        return;
+      }
+
+      var compositeComponents = GetCompositeComponents(layoutXml);
+
+      if (!compositeComponents.Any())
+      {
+        return;
+      }
+      ServiceLocator.ServiceProvider.GetService<IOnPageEditingContextService>().XmlLayoutDefinition = args.Result;
     }
   }
 }

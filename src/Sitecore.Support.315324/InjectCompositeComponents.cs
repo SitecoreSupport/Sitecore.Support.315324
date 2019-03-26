@@ -10,17 +10,14 @@
   {
     public override IList<XElement> GetDevices(XElement layoutXml, ID contextDeviceId)
     {
-      List<XElement> devices = layoutXml.Descendants("d").ToList();
-      if (devices.Any())
+      var allDevices = layoutXml.Descendants("d").ToList();
+
+      var filteredDevices = FilterDevicesByDeviceId(allDevices, contextDeviceId);
+      if (!filteredDevices.Any() && Context.Device.FallbackDevice != null)
       {
-        IList<XElement> list = FilterDevicesByDeviceId(devices, contextDeviceId);
-        if (!list.Any() && Context.Device.FallbackDevice != null)
-        {
-          return GetDevices(layoutXml, Context.Device.FallbackDevice.ID);
-        }
-        return list;
+        return GetDevices(layoutXml, Context.Device.FallbackDevice.ID);
       }
-      return new List<XElement>();
+      return filteredDevices;
     }
   }
 }
