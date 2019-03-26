@@ -42,7 +42,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
       <HintPath>..\packages\SC.Microsoft.Extensions.DependencyInjection.Abstractions.9.0.2\lib\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
@@ -50,24 +50,24 @@
       <HintPath>..\packages\SC.Sitecore.Kernel.9.0.2\lib\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Mvc, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Sitecore.Mvc">
       <HintPath>..\packages\SC.Sitecore.Mvc.9.0.2\lib\Sitecore.Mvc.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.XA.Feature.Composites, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SXA90.Sitecore.XA.Feature.Composites.1.8.0\lib\Sitecore.XA.Feature.Composites.dll</HintPath>
+    <Reference Include="Sitecore.XA.Feature.Composites">
+      <HintPath>..\packages\SXA90.Sitecore.XA.Feature.Composites.1.7.1\lib\Sitecore.XA.Feature.Composites.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.XA.Foundation.Abstractions, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SXA90.Sitecore.XA.Foundation.Abstractions.1.8.0\lib\Sitecore.XA.Foundation.Abstractions.dll</HintPath>
+    <Reference Include="Sitecore.XA.Foundation.Abstractions">
+      <HintPath>..\packages\SXA90.Sitecore.XA.Foundation.Abstractions.1.7.1\lib\Sitecore.XA.Foundation.Abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.Common">
-      <HintPath>..\packages\SXA90.Sitecore.XA.Foundation.Common.1.8.0\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
+      <HintPath>..\packages\SXA90.Sitecore.XA.Foundation.Common.1.7.1\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.XA.Foundation.Presentation, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SXA90.Sitecore.XA.Foundation.Presentation.1.8.0\lib\Sitecore.XA.Foundation.Presentation.dll</HintPath>
+    <Reference Include="Sitecore.XA.Foundation.Presentation">
+      <HintPath>..\packages\SXA90.Sitecore.XA.Foundation.Presentation.1.7.1\lib\Sitecore.XA.Foundation.Presentation.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
