@@ -12,6 +12,13 @@
     {
       var allDevices = layoutXml.Descendants("d").ToList();
 
+      #region fix
+      if (!allDevices.Any())
+      {
+        return new List<XElement>();
+      }
+      #endregion
+
       var filteredDevices = FilterDevicesByDeviceId(allDevices, contextDeviceId);
       if (!filteredDevices.Any() && Context.Device.FallbackDevice != null)
       {
